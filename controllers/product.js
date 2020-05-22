@@ -154,6 +154,18 @@ exports.getAllProducts = (req, res) => {
         })
 }
 
+//get all Unique catogories
+exports.getAllUniqueCategories = (req, res) => {
+    Product.distinct("category", {}, (err, category) => {
+        if (err) {
+            return res.status(400).json({
+                error: "NO category found"
+            })
+        }
+        res.json(category)
+    })
+}
+
 exports.updateStock = (req, res, next) => {
 
     let myOperations = req.body.order.products.map(prod => {

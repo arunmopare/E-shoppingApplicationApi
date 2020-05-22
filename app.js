@@ -12,6 +12,7 @@ const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const categoryRoutes = require("./routes/catogory");
 const productRoutes = require("./routes/product");
+const OrderRoutes = require("./routes/order");
 
 //db connction
 const app = express();
@@ -34,9 +35,10 @@ app.use("/api", authRoutes)
 app.use("/api", userRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
+app.use("/api",OrderRoutes);
 
 //Port
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3100;
 
 //Sterting server
 app.listen(port, () => {
