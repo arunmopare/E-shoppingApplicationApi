@@ -7,13 +7,14 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 
+
 //my Routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const categoryRoutes = require("./routes/catogory");
 const productRoutes = require("./routes/product");
 const OrderRoutes = require("./routes/order");
-
+const stripeRoutes = require("./routes/stripepayment")
 //db connction
 const app = express();
 mongoose.connect(process.env.DATABASE,
@@ -36,6 +37,7 @@ app.use("/api", userRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 app.use("/api",OrderRoutes);
+app.use("/api",stripeRoutes);
 
 //Port
 const port = process.env.PORT || 3100;
